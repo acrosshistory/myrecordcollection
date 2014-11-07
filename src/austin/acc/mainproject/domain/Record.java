@@ -14,6 +14,19 @@ public class Record {
 	private String genre;
 	private String notes;
 	private String art;
+	private int id;
+	
+	public Record(int id,String artist, String album, String year, String genre,
+			String notes, String art) {
+		super();
+		this.id = id;
+		this.artist = artist;
+		this.album = album;
+		this.year = year;
+		this.genre = genre;
+		this.notes = notes;
+		this.art = art;
+	}
 	
 	public Record(String artist, String album, String year, String genre,
 			String notes, String art) {
@@ -74,16 +87,22 @@ public class Record {
 		this.art = art;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Record [artist=").append(artist).append(", album=")
 				.append(album).append(", year=").append(year)
 				.append(", genre=").append(genre).append(", notes=")
-				.append(notes).append(", art=").append(art).append("]");
+				.append(notes).append(", art=").append(art).append(", id=")
+				.append(id).append("]");
 		return builder.toString();
 	}
-	
-	
-
 }

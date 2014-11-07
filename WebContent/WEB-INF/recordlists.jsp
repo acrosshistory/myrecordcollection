@@ -23,28 +23,36 @@
 	
 
 <div class="container">
-		<table class="table table-striped">
+		<table class="table table-striped" border="1">
 			<c:forEach items="${theRecords }" var="aRecord">
 					<td>
 						<blockquote class="blockquote">
-							<c:out value="${aRecord.artist }"/> 
+							<tr><td><c:out value="${aRecord.artist }"/> </td>
 								<br/>
-								<c:out value="${aRecord.album}"/>
+								<td><c:out value="${aRecord.album}"/></td>
 								<br/>
-								<c:out value="${aRecord.year}"/>
+								<td><c:out value="${aRecord.year}"/></td>
 								<br/>
-								<c:out value="${aRecord.genre}"/>
+								<td><c:out value="${aRecord.genre}"/></td>
 								<br/>
-								<c:out value="${aRecord.notes}"/>
+								<td><c:out value="${aRecord.notes}"/></td>
 								<br/>
-								<img src="<c:out value="${aRecord.art}"/>"alt =art/>
-								
-						</blockquote>
+							
+							
+							<td><img src="<c:out value="${aRecord.art}"/>"alt = "art" width="150" height="150" align="right" /></td>
+							
+							</blockquote>
+							
+							<table style="width:100%">
+ 
 					</td>
 				</tr>
 			</c:forEach> 
+		<c:forEach items="${Error}" var="Record didn't update! Let's Try again">
+		</c:forEach> 
 		</table>
-	
+		
+
 	
 	
 	
