@@ -51,24 +51,9 @@
 		<c:forEach items="${Error}" var="Record didn't update! Let's Try again">
 		</c:forEach> 
 		</table>
-		
 
-	
-	
-	
-	
+  
+  
 
- 
-</body>
-
-<div class="container">
-		<footer>
-			<p> The movie database contains ${fn:length(Record)} records as of
-				<fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${now}" />
-			</p>
-		</footer>
-	
-  </div>
-
-<script src="/js/bootstrap.js"></script>
+<script src="/bootstrap-3.2.0-dist/js/bootstrap.js"></script>
 </html>

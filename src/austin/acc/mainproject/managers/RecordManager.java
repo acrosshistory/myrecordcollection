@@ -12,6 +12,7 @@ import austin.acc.mainproject.domain.Record;
 
 
 
+
 public class RecordManager {
 	
 	
@@ -137,28 +138,20 @@ public class RecordManager {
 			return updateSucceeded;
 		}
 		
-		
-		
-		public boolean deleteRecord(Record aRecord) {
-			boolean succeeded = false;
-
+		public void deleteRecord(String recordToDelete) {
+			
+			Connection connection;
 			
 			try {
 
-				Connection connection;
-				connection = ds.getConnection();
-				PreparedStatement statement = connection.prepareStatement("DELETE FROM record WHERE id = 1");
 				
-						/*statement.setString(1,aRecord.getArtist());
-						statement.setString(2,aRecord.getAlbum());
-						statement.setString(3,aRecord.getYear());
-						statement.setString(4,aRecord.getGenre());
-						statement.setString(5,aRecord.getNotes());
-						statement.setString(6,aRecord.getArt());*/
+				connection = ds.getConnection();
+				PreparedStatement statement = connection.prepareStatement("DELETE FROM record WHERE id = ?");
+			    statement.setString(1, recordToDelete);
+	            statement.executeUpdate();
 			
 				
 				statement.execute();
-				succeeded= true;
 				
 				statement.close();
 				connection.close();
@@ -169,9 +162,8 @@ public class RecordManager {
 				e.printStackTrace();
 			}
 			
-			return succeeded;
+			
 		}
 		
+		
 }
-			
-
