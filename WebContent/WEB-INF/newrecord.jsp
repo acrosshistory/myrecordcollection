@@ -12,6 +12,7 @@
 <title>New record </title>
 </head>
 <body>
+<%@ include file="/WEB-INF/nav.jsp"%>
 
 <h2> Enter a record </h2>
 

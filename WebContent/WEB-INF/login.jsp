@@ -11,10 +11,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="<c:url value="/bootstrap-3.2-3.0-dist/css/bootstrap.min.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">
 
 <!-- Optional theme -->
-<link rel="stylesheet" href="<c:url value="/bootstrap-3.2-3.0-dist/css/bootstrap-theme.min.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/bootstrap-theme.min.css"/>">
 
 <%--
 	We moved these <script> tags down to the bottom at the body tag
@@ -24,14 +24,17 @@
 <script src="<c:url value="/jquery/jquery-2.1.1.js"/>"></script>
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="<c:url value="/bootstrap-3.2-3.0-dist/js/bootstrap.min.js"/>"></script>
+<script src="<c:url value="/js/bootstrap.min.js"/>"></script>
 
  --%>
 
 <title>Login</title>
 </head>
 <body>
+<%@ include file="/WEB-INF/nav.jsp"%>
 	<h2>Login</h2>
+	
+	<p> 
 
 	<c:if test="${ not empty error }">
 		<h3 style="color:red;">Error:  ${error }</h3>
@@ -49,13 +52,15 @@
 		</div>
 		<button type="submit" class="btn btn-default">Login</button>
 	</form>
+	
+	
 
 
 	<!-- JQuery -->
 	<script src="<c:url value="/jquery/jquery-2.1.1.js"/>"></script>
 
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="<c:url value="/bootstrap-3.2-3.0-dist/js/bootstrap.min.js"/>"></script>
+	<script src="<c:url value="/js/bootstrap.min.js"/>"></script>
 
 </body>
 </html>

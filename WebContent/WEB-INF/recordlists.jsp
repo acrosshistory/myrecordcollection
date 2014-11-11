@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"> --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -13,16 +13,11 @@
 <link rel="stylesheet" href="<c:url value='/bootstrap-3.2.0-dist/css/bootstrap.css'/>"/>
 <link rel="stylesheet" type="text/css" href="/bootstrap-3.2.0-dist/style.css">
 <body>
-	<div class="jumbotron">
-		<h1><del>The Great List of records</del></h1>
-	</div>
-	
-	<form action="NewRecordServlet" method="get" name="newRecord">
-		<input class="btn btn-primary" type="submit" title="newRecord" value="New Record">
-	</form>
+<%@ include file="/WEB-INF/nav.jsp"%>
+<img src="/img/DSC01398.jpg" alt="logo" height="200" width="1175">
 	
 
-<div class="container">
+ <div class="container">
 		<table class="table table-striped" border="1">
 			<c:forEach items="${theRecords }" var="aRecord">
 					<td>
@@ -50,10 +45,10 @@
 			</c:forEach> 
 		<c:forEach items="${Error}" var="Record didn't update! Let's Try again">
 		</c:forEach> 
-		</table>
+		</table> 
 
-  
   
 
 <script src="/bootstrap-3.2.0-dist/js/bootstrap.js"></script>
+<%@ include file="/WEB-INF/footer.jsp"%>
 </html>

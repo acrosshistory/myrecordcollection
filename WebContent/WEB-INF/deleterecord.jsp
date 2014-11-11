@@ -9,6 +9,7 @@
 <title>Delete your record </title>
 </head>
 <body>
+<%@ include file="/WEB-INF/nav.jsp"%>
 <div class="container">
 	<h2>Edit a Record</h2>
 
