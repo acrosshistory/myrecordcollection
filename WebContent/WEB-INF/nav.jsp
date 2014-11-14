@@ -9,17 +9,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<link rel="stylesheet" href="<c:url value='/bootstrap-3.2.0-dist/css/bootstrap.css'/>"/>
+<link rel="stylesheet" href="/css/grayscale.css" type="text/css">
 
-
-
+<%-- 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">
 
 <!-- <!-- Optional theme --> 
-<%-- <link rel="stylesheet" href="<c:url value="/bootstrap-3.2-3.0-dist/css/bootstrap-theme.min.css"/>"> --%>
+<link rel="stylesheet" href="<c:url value="/bootstrap-3.2-3.0-dist/css/bootstrap-theme.min.css"/>">
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="<c:url value="/js/bootstrap.min.js"/>"></script>
+<script src="<c:url value="/js/bootstrap.min.js"/>"></script> --%>
 <title>Nav bar</title>
 </head>
 <body>
@@ -42,10 +43,11 @@
       <a class="navbar-brand" href=></a>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
+    
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li ><a href="/LogInServlet"></a>please log in</li>
+        <li><a href="/LogInServlet"></a>please log in</li>
+        
         
        
     </div><!-- /.navbar-collapse -->
@@ -65,15 +67,17 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/EditRecordServlet">Edit a Record</a></li>
+        <li><a href="/EditRecordServlet">Edit a Record</a></li>
         <li><a href="/NewRecordServlet">New Record</a></li>
         <li><a href="/DeleteRecordServlet">Delete a Record</a></li>
+        <li><a href="/HomeServlet">list of Records</a></li>
        
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/LogOutServlet">Logout</a></li>
        
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
+  <img src="/img/DSC01398.jpg" alt="logo" height="200" width="1175">
 </nav>
     
    </c:otherwise>

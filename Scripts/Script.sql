@@ -10,5 +10,6 @@ insert into record(artist, album, year, genre, notes, art) values('brian eno', '
 
 select * from record;
 
+
 select * from users;
-DELETE FROM record WHERE id = 8;
+DELETE FROM record WHERE id = 13;

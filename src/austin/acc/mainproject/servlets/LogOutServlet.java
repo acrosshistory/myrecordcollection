@@ -28,6 +28,7 @@ public class LogOutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// To logout we just need to remove our isLoggedIn variable from session
 				request.getSession().removeAttribute("isLoggedIn");
+				request.getSession().removeAttribute("username");
 
 				// Redirect to the root.  This tells the browser to request the root URL
 				response.sendRedirect("/index.html");

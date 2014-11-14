@@ -2253,6 +2253,7 @@ table th[class*="col-"] {
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     border: 1px solid #ddd;
+    
   }
   .table-responsive > .table {
     margin-bottom: 0;
@@ -2266,7 +2267,7 @@ table th[class*="col-"] {
     white-space: nowrap;
   }
   .table-responsive > .table-bordered {
-    border: 0;
+    border: 3;
   }
   .table-responsive > .table-bordered > thead > tr > th:first-child,
   .table-responsive > .table-bordered > tbody > tr > th:first-child,

@@ -8,45 +8,57 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %> 
+
 <title>list of Records</title>
-</head>
 <link rel="stylesheet" href="<c:url value='/bootstrap-3.2.0-dist/css/bootstrap.css'/>"/>
-<link rel="stylesheet" type="text/css" href="/bootstrap-3.2.0-dist/style.css">
+<link rel="stylesheet" href="/css/styles.css" type="text/css">
+<!-- <link rel="stylesheet" type="text/css" href="/bootstrap-3.2.0-dist/style.css"> -->
+
+</head>
 <body>
 <%@ include file="/WEB-INF/nav.jsp"%>
-<img src="/img/DSC01398.jpg" alt="logo" height="200" width="1175">
+
+			<c:forEach items="${theRecords }" var="aRecord">
+			
+			<div class="table-responsive">
+   <table class="table table-hover">
+      
+      <thead>
+         <tr>
+            <th>Artist</th>
+            <th>Album</th>
+            <th>Year</th>
+            <th>Genre</th>
+            <th>Notes</th>
+            <th>Art</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr>
+            <td><c:out value="${aRecord.artist }"/> </td>
+            <td><c:out value="${aRecord.album}"/> </td>
+            <td><c:out value="${aRecord.year}"/> </td>
+            <td><c:out value="${aRecord.genre}"/> </td>
+           <td><c:out value="${aRecord.notes}"/> </td>
+            <td><img src="<c:out value="${aRecord.art}"/>"alt = "art" width="125" height="125" align="right" /></td>
+      </tbody>
+   </table>
+</div>  	
+					
+						
+</c:forEach> 
+
 	
 
- <div class="container">
-		<table class="table table-striped" border="1">
-			<c:forEach items="${theRecords }" var="aRecord">
-					<td>
-						<blockquote class="blockquote">
-							<tr><td><c:out value="${aRecord.artist }"/> </td>
-								<br/>
-								<td><c:out value="${aRecord.album}"/></td>
-								<br/>
-								<td><c:out value="${aRecord.year}"/></td>
-								<br/>
-								<td><c:out value="${aRecord.genre}"/></td>
-								<br/>
-								<td><c:out value="${aRecord.notes}"/></td>
-								<br/>
-							
-							
-							<td><img src="<c:out value="${aRecord.art}"/>"alt = "art" width="150" height="150" align="right" /></td>
-							
-							</blockquote>
-							
-							<table style="width:100%">
  
-					</td>
-				</tr>
-			</c:forEach> 
-		<c:forEach items="${Error}" var="Record didn't update! Let's Try again">
-		</c:forEach> 
-		</table> 
 
+
+		
+			
+		
+		
+<c:forEach items="${Error}" var="Record didn't update! Let's Try again">
+		</c:forEach> 
   
 
 <script src="/bootstrap-3.2.0-dist/js/bootstrap.js"></script>

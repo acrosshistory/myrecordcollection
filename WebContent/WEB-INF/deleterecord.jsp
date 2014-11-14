@@ -11,18 +11,18 @@
 <body>
 <%@ include file="/WEB-INF/nav.jsp"%>
 <div class="container">
-	<h2>Edit a Record</h2>
+	<h2>Delete a Record</h2>
 
 
 	<h5>The Record is: <c:out value="${record }"/></h5>
-	<form  role="form" action="DeleteRecordServlet" method="post" >
+	<form  role="form" action="<c:url value="/DeleteRecordServlet" />" method="post" >
 
-		<input type="hidden" name="action" value="deleteRecord">
-		<input type="hidden" name="id" value="${ id }">
+		
 		
 		<div class="form-group">
 			<label for="id">ID</label>
-			<input id="id" type="text" name="id" value="${ id }"  disabled readonly> <br>
+			
+			<input id="id" type="text" name="id" value="${ id }" readonly> <br>
 		</div>
 		
 		

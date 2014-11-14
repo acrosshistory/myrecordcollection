@@ -48,27 +48,26 @@ public class DeleteRecordServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String action = request.getParameter("action");
-
-		if ( action.equalsIgnoreCase("recordDelete") ) {
-			String recordID = request.getParameter("id");
-			String artist = request.getParameter("artist");
-			String album = request.getParameter("album");
-			String year = request.getParameter("year");
-			String genre = request.getParameter("genre");
-			String notes = request.getParameter("notes");
-			String art = request.getParameter("art");
-			
-			Record mydeleteRecord = new Record(new Integer(recordID), artist, album, year, genre, notes, art);
 		
-			RecordManager rm = new RecordManager(ds);
-		//	rm.deleteRecord(mydeleteRecord);
-				request.setAttribute("theRecords", rm.getRecords());
-				request.getRequestDispatcher("/WEB-INF/recordlists.jsp").forward(request, response);
-			}
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		System.out.println(id);
+		RecordManager rm = new RecordManager(ds);
+		
+		rm.deleteRecord(id);
+		//passing the param
+		System.out.println(id);
+		response.sendRedirect("/");
+		
+		
+	
+
+	
+				
+	}
 
 		}
-	}
+	
 		
 			
 	

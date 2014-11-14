@@ -138,8 +138,8 @@ public class RecordManager {
 			return updateSucceeded;
 		}
 		
-	/*	public void deleteRecord(Record myDeletedRecord) {
-			
+		public boolean deleteRecord(int id) {
+			boolean ok = false;
 			Connection connection;
 			
 			try {
@@ -147,12 +147,12 @@ public class RecordManager {
 				
 				connection = ds.getConnection();
 				PreparedStatement statement = connection.prepareStatement("DELETE FROM record WHERE id = ?");
-			 
-	            statement.execute(myDeletedRecord);
+				statement.setInt(1, id);
+	         
 			
 				
 				statement.execute();
-				
+				ok = true;
 				statement.close();
 				connection.close();
 				
@@ -162,8 +162,8 @@ public class RecordManager {
 				e.printStackTrace();
 			}
 			
-			
-		}*/
+			return ok;
+		}
 		
 		
 }

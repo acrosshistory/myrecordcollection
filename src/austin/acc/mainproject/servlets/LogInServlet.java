@@ -57,6 +57,7 @@ public class LogInServlet extends HttpServlet {
 				if (validLogin(username, password)) {
 					//TODO - Put boolean in session
 					request.getSession().setAttribute("isLoggedIn", true);
+					request.getSession().setAttribute("username", username);
 					response.sendRedirect("/");
 				} else {
 					request.setAttribute("error", "Username and Password has a error!");
