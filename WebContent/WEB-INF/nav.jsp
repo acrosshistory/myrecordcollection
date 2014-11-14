@@ -10,7 +10,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <link rel="stylesheet" href="<c:url value='/bootstrap-3.2.0-dist/css/bootstrap.css'/>"/>
-<link rel="stylesheet" href="/css/grayscale.css" type="text/css">
+<link rel="stylesheet" href="/css/styles.css" type="text/css">
 
 <%-- 
 <!-- Latest compiled and minified CSS -->
@@ -21,6 +21,8 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="<c:url value="/js/bootstrap.min.js"/>"></script> --%>
+<!-- JQuery -->
+<script src="<c:url value="/jquery/jquery-2.1.1.js"/>"></script>
 <title>Nav bar</title>
 </head>
 <body>
@@ -67,7 +69,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/EditRecordServlet">Edit a Record</a></li>
+      
+        <li class="active"><a href="/EditRecordServlet">Edit a Record</a></li>
         <li><a href="/NewRecordServlet">New Record</a></li>
         <li><a href="/DeleteRecordServlet">Delete a Record</a></li>
         <li><a href="/HomeServlet">list of Records</a></li>
@@ -77,7 +80,9 @@
        
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
-  <img src="/img/DSC01398.jpg" alt="logo" height="200" width="1175">
+  <img src="/img/DSC01398.jpg" alt="logo" width="2000" height="150">
+  
+
 </nav>
     
    </c:otherwise>
@@ -86,4 +91,7 @@
     
 
 </body>
+
+
+	
 </html>

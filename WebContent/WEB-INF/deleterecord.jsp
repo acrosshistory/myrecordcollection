@@ -18,7 +18,7 @@
 	<form  role="form" action="<c:url value="/DeleteRecordServlet" />" method="post" >
 
 		
-		
+		<div class="well well-sm">
 		<div class="form-group">
 			<label for="id">ID</label>
 			
@@ -29,6 +29,7 @@
 			
 		<div class="form-group">
 			
+		</div>
 		</div>
 		<button type="submit" class="btn btn-default">delete</button>
 	</form>

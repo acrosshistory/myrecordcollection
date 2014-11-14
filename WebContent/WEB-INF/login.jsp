@@ -42,6 +42,7 @@
 
 	<form  role="form" action="/LogInServlet" method="post" >
 		<input type="hidden" name="action" value="login">
+		<div class="well well-sm">
 		<div class="form-group">
 			<label for="username">User name</label>
 			<input id="username" type="text" name="username" placeholder="Username" > <br>
@@ -49,6 +50,7 @@
 		<div class="form-group">
 			<label for="password">Password</label>
 			<input id="password" type="text" name="password" placeholder="Password" > <br>
+		</div>
 		</div>
 		<button type="submit" class="btn btn-default">Login</button>
 	</form>

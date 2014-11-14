@@ -13,14 +13,15 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/nav.jsp"%>
-
+<link rel="stylesheet" href="/css/styles.css" type="text/css">
 <h2> Enter a record </h2>
 
 <form role="form" action="NewRecordServlet" method="post">
 	<input type="hidden" name="action" value="addNewRecord">
+	<div class="well well-sm">
 	<div class="form-group">
 		<label for="artist">artist</label>
-		<input id="artist" type="text" name="artist" placeholder="artist"> <br>
+		<input id="artist" type="text" name="artist" placeholder="artist" > <br>
 	</div>
 	
 	<div class="form-group">
@@ -45,6 +46,7 @@
 	<div class="form-group">
 		<label for="art">art</label>
 		<input id="art" type="text" name="art" placeholder="Art"> <br>
+	</div>
 	</div>
 	<button type="submit" class="btn btn-default">Submit</button>
 

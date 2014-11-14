@@ -10,6 +10,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %> 
 
 <title>list of Records</title>
+
+
 <link rel="stylesheet" href="<c:url value='/bootstrap-3.2.0-dist/css/bootstrap.css'/>"/>
 <link rel="stylesheet" href="/css/styles.css" type="text/css">
 <!-- <link rel="stylesheet" type="text/css" href="/bootstrap-3.2.0-dist/style.css"> -->
@@ -60,7 +62,8 @@
 <c:forEach items="${Error}" var="Record didn't update! Let's Try again">
 		</c:forEach> 
   
-
+<!-- JQuery -->
+	<script src="<c:url value="/jquery/jquery-2.1.1.js"/>"></script>
 <script src="/bootstrap-3.2.0-dist/js/bootstrap.js"></script>
 <%@ include file="/WEB-INF/footer.jsp"%>
 </html>

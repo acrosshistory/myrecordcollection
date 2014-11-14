@@ -9,10 +9,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <title>Edit your record </title>
+
 </head>
 <body>
-<%@ include file="/WEB-INF/nav.jsp"%>
 
+<%@ include file="/WEB-INF/nav.jsp"%>
+<link rel="stylesheet" href="/css/styles.css" type="text/css">
 <div class="container">
 	<h2>Edit a Record</h2>
 
@@ -29,10 +31,10 @@
 		</div>
 		
 		
-			
+		<div class="well well-sm">
 		<div class="form-group">
 			<label for="artist">artist</label>
-			<textarea id="artist" name="artist" rows="4" cols="50"><c:out value="${record.artist }"/></textarea>
+			<label id="artist" type="text" name="artist" value="${rrecord.artist }"/><br>
 			<label for="album">album</label>
 			<input id="album" type="text" name="album" value="${record.album }" > <br>
 			<label for="year">year</label>
@@ -40,10 +42,11 @@
 			<label for="genre">genre</label>
 			<input id="genre" type="text" name="genre" value="${record.genre }" > <br>
 			<label for="notes">notes</label>
-			<input id="notes" type="text" name="notes" value="${record.notes }" > <br>
+			<textarea  id="notes" name="notes" rows="1" cols="42"><c:out value="${record.notes }"/></textarea><br>
 			<label for="art">art</label>
-			<input id="art" type="text" name="art" value="${record.art }" > <br>
+			<input id="art" type="text" name="art" value="${record.art }" ><br>
 		</div>
+		<div></div>
 		<button type="submit" class="btn btn-default">Save</button>
 	</form>
 </div>
