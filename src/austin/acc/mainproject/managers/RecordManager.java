@@ -165,5 +165,41 @@ public class RecordManager {
 			return ok;
 		}
 		
+		public ArrayList<Record> getRecordsByUser(String username) {
+			ArrayList<Record> records = new ArrayList<>();
+
+			try {
+				Connection connection;
+				connection = ds.getConnection();
+				
+				PreparedStatement ps = connection.prepareStatement("select id, owner, artist, album, year, genre, notes, art from record where owner = ?");
+				
+				ps.setString(1, username);
+
+				ResultSet resultSet = ps.executeQuery();
+				
+				while (resultSet.next()) {
+					records.add(new Record(
+							resultSet.getInt("id"),
+							resultSet.getString("owner"), 
+							resultSet.getString("album"), 
+							resultSet.getString("year"), 
+							resultSet.getString("genre"),
+							resultSet.getString("notes"),
+							resultSet.getString("art")
+							));
+				}
+
+				resultSet.close();
+				ps.close();
+				connection.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			return records;
+		}	
+		
 		
 }

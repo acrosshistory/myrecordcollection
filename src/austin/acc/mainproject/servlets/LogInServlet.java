@@ -72,10 +72,10 @@ public class LogInServlet extends HttpServlet {
 		boolean validUserLogin = false;
 
 
-		Connection c;
+		Connection conection;
 		try {
-			c = ds.getConnection();
-			PreparedStatement ps = c.prepareStatement("select count(*) as numMatchingUsers from users where username = ? and password = ?");
+			conection = ds.getConnection();
+			PreparedStatement ps = conection.prepareStatement("select count(*) as numMatchingUsers from users where username = ? and password = ?");
 			ps.setString(1, username);
 			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();
@@ -88,7 +88,7 @@ public class LogInServlet extends HttpServlet {
 			}
 
 
-			c.close();
+			conection.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

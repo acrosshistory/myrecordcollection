@@ -50,7 +50,8 @@
 		<button type="submit" class="btn btn-default">Save</button>
 	</form>
 </div>
-	
+	<c:forEach items="${Error}" var="Record didn't update! Let's Try again">
+		</c:forEach> 
 
 
 </body>

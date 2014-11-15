@@ -39,6 +39,19 @@ public class Record {
 		this.art = art;
 	}
 
+	public Record(int id, String owner,String artist, String album, String year, String genre,
+			String notes, String art) {
+		
+		this.id = id;
+		this.artist = artist;
+		this.album = album;
+		this.year = year;
+		this.genre = genre;
+		this.notes = notes;
+		this.art = art;
+	
+	}
+
 	public String getArtist() {
 		return artist;
 	}

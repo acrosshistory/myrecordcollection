@@ -49,7 +49,7 @@ public class HomeServlet extends HttpServlet {
 			request.setAttribute("theRecords", rm.getRecords());
 			System.out.print(rm.getRecords());
 			getServletContext()
-					.getRequestDispatcher("/WEB-INF/recordlists.jsp").forward(
+					.getRequestDispatcher("/UsersRecordList").forward(
 							request, response);
 			request.setAttribute("now", new Date());
 

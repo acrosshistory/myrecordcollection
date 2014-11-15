@@ -27,6 +27,7 @@
       
       <thead>
          <tr>
+         	<th>User</th>
             <th>Artist</th>
             <th>Album</th>
             <th>Year</th>
@@ -37,6 +38,7 @@
       </thead>
       <tbody>
          <tr>
+         	
             <td><c:out value="${aRecord.artist }"/> </td>
             <td><c:out value="${aRecord.album}"/> </td>
             <td><c:out value="${aRecord.year}"/> </td>
