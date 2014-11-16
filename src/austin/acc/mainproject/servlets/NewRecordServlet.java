@@ -45,17 +45,18 @@ public class NewRecordServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		if (action.equalsIgnoreCase("addNewRecord")){
+			String owner = (String) request.getSession().getAttribute("username");
 			String artist = request.getParameter("artist");
 			String album = request.getParameter("album");
 			String year = request.getParameter("year");
 			String genre = request.getParameter("genre");
 			String notes = request.getParameter("notes");
 			String art = request.getParameter("art");
-			
-			Record myNewRecord = new Record(artist, album, year, genre, notes, art);
+			System.out.println("owner is" + owner);
+			Record myNewRecord = new Record(owner,artist, album, year, genre, notes, art);
 			RecordManager rm = new RecordManager(ds);
 			if (rm.saveRecord(myNewRecord)){
-				response.sendRedirect("");
+				response.sendRedirect("/UsersRecordList");
 				return;
 			}else{
 				request.getRequestDispatcher("/WEB-INF/newrecord.jsp").forward(request, response);

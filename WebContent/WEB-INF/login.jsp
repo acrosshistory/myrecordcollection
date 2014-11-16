@@ -54,10 +54,7 @@
 		</div>
 		<button type="submit" class="btn btn-default">Login</button>
 	</form>
-	<form  role="form" action="/AdminServlet" method="get" >
-			<input type="hidden" name="action" value="admin">
-			<button type="submit" class="btn btn-default">log in as admin</button>
-		</form>
+		
 	
 
 

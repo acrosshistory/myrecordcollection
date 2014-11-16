@@ -52,6 +52,7 @@ public class EditRecordServlet extends HttpServlet {
 
 		if ( action.equalsIgnoreCase("updateRecord") ) {
 			String recordID = request.getParameter("id");
+			String owner = (String) request.getSession().getAttribute("username");
 			String artist = request.getParameter("artist");
 			String album = request.getParameter("album");
 			String year = request.getParameter("year");
@@ -59,17 +60,19 @@ public class EditRecordServlet extends HttpServlet {
 			String notes = request.getParameter("notes");
 			String art = request.getParameter("art");
 			
+			System.out.println(artist);
+			
 			Record myUpdatedRecord = new Record(new Integer(recordID), artist, album, year, genre, notes, art);
 		
 			RecordManager rm = new RecordManager(ds);
 			if ( rm.updateRecord(myUpdatedRecord) ) {
-				response.sendRedirect("");
+				response.sendRedirect("UsersRecordList");
 				return;
 			} else {
 				// If save didn't work then go back to the newrecord page
 				request.setAttribute("error", "Record didn't update! Let's Try again");
 				request.setAttribute("theRecords", rm.getRecords());
-				request.getRequestDispatcher("/WEB-INF/recordlists.jsp").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/usersrecordlist.jsp").forward(request, response);
 			}
 
 		}

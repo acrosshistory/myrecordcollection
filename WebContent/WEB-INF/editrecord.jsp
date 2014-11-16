@@ -34,7 +34,7 @@
 		<div class="well well-sm">
 		<div class="form-group">
 			<label for="artist">artist</label>
-			<label id="artist" type="text" name="artist" value="${rrecord.artist }"/><br>
+			<input id="artist" type="text" name="artist" value="${record.artist }"/><br>
 			<label for="album">album</label>
 			<input id="album" type="text" name="album" value="${record.album }" > <br>
 			<label for="year">year</label>
@@ -53,6 +53,15 @@
 	<c:forEach items="${Error}" var="Record didn't update! Let's Try again">
 		</c:forEach> 
 
+		<form  role="form" action="<c:url value="/DeleteRecordServlet" />" method="post" >
 
+		
+	
+			<input id="id" type="hidden" name="id" value="${ record.id }" readonly> <br>
+	
+		
+	
+		<button type="submit" class="btn btn-default">delete</button>
+	</form>
 </body>
 </html>

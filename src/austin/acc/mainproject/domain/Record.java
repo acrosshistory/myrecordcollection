@@ -8,6 +8,7 @@ package austin.acc.mainproject.domain;
  *
  */
 public class Record {
+	private String owner;
 	private String artist;
 	private String album;
 	private String year;
@@ -20,6 +21,7 @@ public class Record {
 			String notes, String art) {
 		super();
 		this.id = id;
+		this.artist = artist;
 		this.artist = artist;
 		this.album = album;
 		this.year = year;
@@ -41,8 +43,9 @@ public class Record {
 
 	public Record(int id, String owner,String artist, String album, String year, String genre,
 			String notes, String art) {
-		
+	
 		this.id = id;
+		this.owner = owner;
 		this.artist = artist;
 		this.album = album;
 		this.year = year;
@@ -50,6 +53,29 @@ public class Record {
 		this.notes = notes;
 		this.art = art;
 	
+	}
+	
+	
+	
+
+	public Record(String owner,String artist, String album, String year, String genre,
+			String notes, String art) {
+		this.owner = owner;
+		this.artist = artist;
+		this.album = album;
+		this.year = year;
+		this.genre = genre;
+		this.notes = notes;
+		this.art = art;
+	
+	}
+	
+	public String getOwner() {
+		return owner;
+	}
+	
+	public void setOwner(String owner) {
+		this.owner = owner;
 	}
 
 	public String getArtist() {
@@ -111,11 +137,15 @@ public class Record {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Record [artist=").append(artist).append(", album=")
-				.append(album).append(", year=").append(year)
-				.append(", genre=").append(genre).append(", notes=")
-				.append(notes).append(", art=").append(art).append(", id=")
-				.append(id).append("]");
+		builder.append("Record [owner=").append(owner).append(", artist=")
+				.append(artist).append(", album=").append(album)
+				.append(", year=").append(year).append(", genre=")
+				.append(genre).append(", notes=").append(notes)
+				.append(", art=").append(art).append(", id=").append(id)
+				.append("]");
 		return builder.toString();
 	}
+
+	
+	
 }

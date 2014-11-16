@@ -27,7 +27,7 @@
       
       <thead>
          <tr>
-         	<th>User</th>
+         	
             <th>Artist</th>
             <th>Album</th>
             <th>Year</th>
@@ -38,18 +38,19 @@
       </thead>
       <tbody>
          <tr>
-         	
+         	<td><c:out value="${aRecord.owner }"/> </td>
             <td><c:out value="${aRecord.artist }"/> </td>
             <td><c:out value="${aRecord.album}"/> </td>
             <td><c:out value="${aRecord.year}"/> </td>
             <td><c:out value="${aRecord.genre}"/> </td>
            <td><c:out value="${aRecord.notes}"/> </td>
             <td><img src="<c:out value="${aRecord.art}"/>"alt = "art" width="125" height="125" align="right" /></td>
+            <a href="/EditRecordServlet?id=${aRecord.id}">Edit a Record</a>
+            
       </tbody>
    </table>
 </div>  	
-					
-						
+				
 </c:forEach> 
 
 	

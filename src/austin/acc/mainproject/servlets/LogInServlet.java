@@ -13,36 +13,38 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-
-
 /**
  * Servlet implementation class LogInServlet
  */
 @WebServlet("/LogInServlet")
 public class LogInServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-	
-	@Resource(name="jdbc/QuoteDB")
-	DataSource ds;
-    public LogInServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
-	}
-			
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Resource(name = "jdbc/QuoteDB")
+	DataSource ds;
+
+	public LogInServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request,
+				response);
+	}
+
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 
 		if (action.equalsIgnoreCase("login")) {
@@ -50,32 +52,45 @@ public class LogInServlet extends HttpServlet {
 			String password = request.getParameter("password");
 
 			if (username.isEmpty() || password.isEmpty()) {
-				request.setAttribute("error", "Username and Password both need to be filled out!");
-				request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request,	response);
+				request.setAttribute("error",
+						"Username and Password both need to be filled out!");
+				request.getRequestDispatcher("/WEB-INF/login.jsp").forward(
+						request, response);
 			} else {
 				// Check to see if user can login
-				if (validLogin(username, password)) {
-					//TODO - Put boolean in session
+				if (username.matches("admin")) {
+					// Put boolean in session
 					request.getSession().setAttribute("isLoggedIn", true);
 					request.getSession().setAttribute("username", username);
-					response.sendRedirect("/");
+					request.getSession().setAttribute("password", password);
+					response.sendRedirect("/AdminServlet");
 				} else {
-					request.setAttribute("error", "Username and Password has a error!");
-					request.getSession().setAttribute("isLoggedIn", false);
-					request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+					if (validLogin(username, password)) {
+						// TODO - Put boolean in session
+						request.getSession().setAttribute("isLoggedIn", true);
+						request.getSession().setAttribute("username", username);
+						response.sendRedirect("/");
+
+					} else {
+						request.setAttribute("error",
+								"Username and Password has a error!");
+						request.getSession().setAttribute("isLoggedIn", false);
+						request.getRequestDispatcher("/WEB-INF/login.jsp")
+								.forward(request, response);
+					}
 				}
 			}
 		}
 	}
-	
+
 	public boolean validLogin(String username, String password) {
 		boolean validUserLogin = false;
-
 
 		Connection conection;
 		try {
 			conection = ds.getConnection();
-			PreparedStatement ps = conection.prepareStatement("select count(*) as numMatchingUsers from users where username = ? and password = ?");
+			PreparedStatement ps = conection
+					.prepareStatement("select count(*) as numMatchingUsers from users where username = ? and password = ?");
 			ps.setString(1, username);
 			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();
@@ -87,21 +102,13 @@ public class LogInServlet extends HttpServlet {
 				}
 			}
 
-
 			conection.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-
-
 		return validUserLogin;
 	}
-
-	
-
-
-
 
 }

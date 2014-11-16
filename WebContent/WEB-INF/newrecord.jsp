@@ -54,4 +54,5 @@
 </form>
 
 </body>
+<%@ include file="/WEB-INF/footer.jsp"%>
 </html>

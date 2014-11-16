@@ -53,14 +53,14 @@ public class RecordManager {
 
 				Connection connection;
 				connection = ds.getConnection();
-				PreparedStatement statement = connection.prepareStatement("insert into record(artist, album, year, genre, notes, art) values (?,?,?,?,?,?)");
-				
-						statement.setString(1,aRecord.getArtist());
-						statement.setString(2,aRecord.getAlbum());
-						statement.setString(3,aRecord.getYear());
-						statement.setString(4,aRecord.getGenre());
-						statement.setString(5,aRecord.getNotes());
-						statement.setString(6,aRecord.getArt());
+				PreparedStatement statement = connection.prepareStatement("insert into record(owner, artist, album, year, genre, notes, art) values (?,?,?,?,?,?,?)");
+						statement.setString(1,aRecord.getOwner());
+						statement.setString(2,aRecord.getArtist());
+						statement.setString(3,aRecord.getAlbum());
+						statement.setString(4,aRecord.getYear());
+						statement.setString(5,aRecord.getGenre());
+						statement.setString(6,aRecord.getNotes());
+						statement.setString(7,aRecord.getArt());
 			
 				
 				statement.execute();
@@ -83,7 +83,7 @@ public class RecordManager {
 			Record returnRecord = null;
 			try {
 				connection = ds.getConnection();
-				PreparedStatement ps = connection.prepareStatement("select id, artist, album,  year, genre, notes, art from record where id = ?");
+				PreparedStatement ps = connection.prepareStatement("select id, owner, artist, album,  year, genre, notes, art from record where id = ?");
 				ps.setString(1, idString);
 
 				ResultSet rs = ps.executeQuery();
@@ -91,6 +91,7 @@ public class RecordManager {
 				while (rs.next()) {
 					int id = rs.getInt("id");
 					String artistString = rs.getString("artist");
+					String ownerString = rs.getString("owner");
 					String albumString = rs.getString("album");
 					String yearString = rs.getString("year");
 					String genreString = rs.getString("genre");
@@ -98,7 +99,7 @@ public class RecordManager {
 					String artString = rs.getString("art");
 					
 
-					returnRecord = new Record(id, artistString, albumString, yearString, genreString, notesString, artString);
+					returnRecord = new Record(id, artistString, ownerString, albumString, yearString, genreString, notesString, artString);
 				}
 
 				connection.close();
@@ -123,7 +124,7 @@ public class RecordManager {
 				ps.setString(5,  myUpdatedRecord.getNotes());
 				ps.setString(6,  myUpdatedRecord.getArt());
 				ps.setInt(7, myUpdatedRecord.getId());
-
+				System.out.println("artist" + myUpdatedRecord.getArtist());
 				ps.execute();
 
 				connection.close();
@@ -181,7 +182,7 @@ public class RecordManager {
 				while (resultSet.next()) {
 					records.add(new Record(
 							resultSet.getInt("id"),
-							resultSet.getString("owner"), 
+							resultSet.getString("artist"), 
 							resultSet.getString("album"), 
 							resultSet.getString("year"), 
 							resultSet.getString("genre"),
