@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
+import austin.acc.mainproject.domain.Record;
 import austin.acc.mainproject.domain.Users;
 
 	
@@ -70,5 +71,62 @@ import austin.acc.mainproject.domain.Users;
 
 			return added;
 		}
+		public Users getUserById(String idString) {
 
-}
+			Connection connection;
+			Users returnUser = null;
+			try {
+				connection = ds.getConnection();
+				PreparedStatement ps = connection.prepareStatement("select id, username, password from users where id = ?");
+				ps.setString(1, idString);
+			
+
+				ResultSet rs = ps.executeQuery();
+
+				while (rs.next()) {
+					int id = rs.getInt("id");
+					String usernameString = rs.getString("username");
+					String passwordString = rs.getString("password");
+			
+
+					returnUser = new Users(id, usernameString, passwordString);
+				}
+
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			return returnUser;
+		}
+		
+		public boolean deleteUser(int id) {
+			boolean ok = false;
+			Connection connection;
+			
+			try {
+
+				
+				connection = ds.getConnection();
+				PreparedStatement statement = connection.prepareStatement("DELETE FROM Users WHERE id = ?");
+				statement.setInt(1, id);
+	         
+			
+				
+				statement.execute();
+				ok = true;
+				statement.close();
+				connection.close();
+				
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return ok;
+		}
+		
+	}
+

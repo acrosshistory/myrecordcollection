@@ -52,7 +52,7 @@ public class NewUsersServlet extends HttpServlet {
 
 			boolean succeeded = um.addUser(myNewUser);
 			if ( succeeded == true ) {
-				response.sendRedirect("");
+				response.sendRedirect("/LogInServlet");
 				return;
 			} else {
 				request.setAttribute("errorMessage", "Could not add user. Try again!");

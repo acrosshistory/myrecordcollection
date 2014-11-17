@@ -22,5 +22,5 @@ select * from record;
 select id, owner, artist, album, year, genre, notes, art from record where owner = 'user';
 
 
-select * from users;
+select id, username, password from users where id = 3;
 DELETE FROM record WHERE id = 13;

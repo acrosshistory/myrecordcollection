@@ -45,6 +45,7 @@
         <li><a href="/NewRecordServlet">New Record</a></li>
         <li><a href="/DeleteRecordServlet">Delete a Record</a></li>
         <li><a href="/AdminServlet">list of Records</a></li>
+        <li><a href="/UsersServlet">users</a></li>
        
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/LogOutServlet">Logout</a></li>
