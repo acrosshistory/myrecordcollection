@@ -6,16 +6,23 @@ body {
    font-family: Montserrat, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #219AB3;
     background-color: #000;
+    font-size: 30px;
+   
+}
+
+ul{
+	font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #219AB3;
 }
 
 
 .navbar{
 	
-	font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: Montserrat, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #219AB3;
     background-color: #000;
 }
-navbar.li.a{
+.navbar.a{
 	font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #219AB3;
 	

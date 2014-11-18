@@ -41,7 +41,7 @@
         <li class="active"><a href="/EditRecordServlet">Edit a Record</a></li>
         <li><a href="/NewRecordServlet">New Record</a></li>
         <li><a href="/DeleteRecordServlet">Delete a Record</a></li>
-        <li><a href="">list of Records</a></li>
+        <li><a href="/HomeServlet">list of Records</a></li>
         <li><a href="/UsersServlet">users</a></li>
        
       <ul class="nav navbar-nav navbar-right">
