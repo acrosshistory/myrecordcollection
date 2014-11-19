@@ -21,70 +21,76 @@ import austin.acc.mainproject.managers.UsersManager;
 @WebServlet("/AdminServlet")
 public class AdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	@Resource(name="jdbc/QuoteDB")
-	DataSource ds; 
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AdminServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	@Resource(name = "jdbc/QuoteDB")
+	DataSource ds;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
-			HttpSession mySession = request.getSession();
-		
-		if ( !mySession.getAttribute("username").equals("admin") ) {
-			getServletContext().getRequestDispatcher("/WEB-INF/403error.jsp").forward(request, response);
-		} else {
-		
-		UsersManager um = new UsersManager(ds);
-		request.setAttribute("theUsers", um.getUsers());
-		
-		RecordManager rm = new RecordManager(ds);
-		request.setAttribute("theRecords", rm.getRecords());
+	public AdminServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-		getServletContext().getRequestDispatcher("/WEB-INF/admin.jsp").forward(request, response);
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		HttpSession mySession = request.getSession();
+
+		if (!mySession.getAttribute("username").equals("admin")
+				& !mySession.getAttribute("password").equals("admin")) {
+			getServletContext().getRequestDispatcher("/WEB-INF/403error.jsp")
+					.forward(request, response);
+		} else {
+
+			UsersManager um = new UsersManager(ds);
+			request.setAttribute("theUsers", um.getUsers());
+
+			RecordManager rm = new RecordManager(ds);
+			request.setAttribute("theRecords", rm.getRecords());
+
+			getServletContext().getRequestDispatcher("/WEB-INF/admin.jsp")
+					.forward(request, response);
 		}
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 
-		if ( action.equalsIgnoreCase("addNewUser") ) {
+		if (action.equalsIgnoreCase("addNewUser")) {
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
-			
 
 			Users myNewUser = new Users(username, password);
 			UsersManager um = new UsersManager(ds);
 
 			boolean succeeded = um.addUser(myNewUser);
-			if ( succeeded == true ) {
+			if (succeeded == true) {
 				response.sendRedirect("/Member");
 				return;
 			} else {
-				request.setAttribute("errorMessage", "Could not add user. Try again!");
+				request.setAttribute("errorMessage",
+						"Could not add user. Try again!");
 				// If save didn't work then go back to the newUser page
-				request.getRequestDispatcher("/WEB-INF/newusers.jsp").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/newusers.jsp").forward(
+						request, response);
 			}
 
 			// Adding user worked so display list of users
 			request.getRequestDispatcher("/WEB-INF/userslist.jsp");
 			return;
 
-	}
+		}
 
 	}
-	
+
 }
-
-

@@ -39,17 +39,18 @@
 	<c:if test="${ not empty error }">
 		<h3 style="color:red;">Error:  ${error }</h3>
 	</c:if>
+	
 
 	<form  role="form" action="/LogInServlet" method="post" >
 		<input type="hidden" name="action" value="login">
 		<div class="well well-sm">
 		<div class="form-group">
-			<label for="username">User name</label>
+			<label for="username">User Name</label>
 			<input id="username" type="text" name="username" placeholder="Username" > <br>
 		</div>
 		<div class="form-group">
 			<label for="password">Password</label>
-			<input id="password" type="text" name="password" placeholder="Password" > <br>
+			<input id="password" type="password" name="password" placeholder="Password" > <br>
 		</div>
 		</div>
 		<button type="submit" class="btn btn-default">Login</button>

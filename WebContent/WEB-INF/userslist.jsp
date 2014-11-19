@@ -11,18 +11,14 @@
 <link rel="stylesheet" href="<c:url value='/bootstrap-3.2.0-dist/css/bootstrap.css'/>"/>
 <link rel="stylesheet" href="/css/styles.css" type="text/css">
 
-<%-- 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">
 
-<!-- <!-- Optional theme --> 
-<link rel="stylesheet" href="<c:url value="/bootstrap-3.2-3.0-dist/css/bootstrap-theme.min.css"/>">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="<c:url value="/js/bootstrap.min.js"/>"></script> --%>
+<!-- Optional theme -->
+<link rel="stylesheet" href="<c:url value="/css/bootstrap-theme.min.css"/>">
 <!-- JQuery -->
 <script src="<c:url value="/jquery/jquery-2.1.1.js"/>"></script>
-
+<link rel="stylesheet" href="/css/styles.css" type="text/css">
 <title>Users</title>
 </head>
 <body>
@@ -38,11 +34,10 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
       
-        <li class="active"><a href="/EditRecordServlet">Edit a Record</a></li>
-        <li><a href="/NewRecordServlet">New Record</a></li>
-        <li><a href="/DeleteRecordServlet">Delete a Record</a></li>
-        <li><a href="/HomeServlet">list of Records</a></li>
-        <li><a href="/UsersServlet">users</a></li>
+     
+      
+        <li><a href="/AdminServlet">List Of All Records</a></li>
+        <li><a href="/UsersServlet">List Of All Users</a></li>
        
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/LogOutServlet">Logout</a></li>
@@ -60,10 +55,10 @@
       </thead>
       <tbody>
          <tr>
-         	<td><c:out value="${aUser.id }"/> </td>
+         	<td><a href="/DeleteUsersServlet?id=${aUser.id}"><c:out value="${aUser.id }"/></a></td>
             <td><c:out value="${aUser.username }"/> </td>
           <td><c:out value="${aUser.password }"/> </td>
-          <td><button><a href="/DeleteUsersServlet?id=${aUser.id}">Delete</a></button></td>
+          
             
       </tbody>
       </c:forEach>
@@ -75,6 +70,7 @@
 				
 
 </body>
+<%@ include file="/WEB-INF/footer.jsp"%>
 </html>
 
 

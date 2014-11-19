@@ -13,9 +13,18 @@
 
 
 <link rel="stylesheet" href="<c:url value='/bootstrap-3.2.0-dist/css/bootstrap.css'/>"/>
-<link rel="stylesheet" href="/css/styles.css" type="text/css">
-<!-- <link rel="stylesheet" type="text/css" href="/bootstrap-3.2.0-dist/style.css"> -->
 
+
+<%-- 
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">
+
+<!-- <!-- Optional theme --> 
+<link rel="stylesheet" href="<c:url value="/bootstrap-3.2-3.0-dist/css/bootstrap-theme.min.css"/>">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="<c:url value="/js/bootstrap.min.js"/>"></script> --%>
+<link rel="stylesheet" href="/css/styles.css" type="text/css">
 </head>
 <body>
 <%@ include file="/WEB-INF/nav.jsp"%>
@@ -28,24 +37,24 @@
       <thead>
          <tr>
          	
-            <th>Artist</th>
+<!--             <th>Artist</th>
             <th>Album</th>
             <th>Year</th>
             <th>Genre</th>
             <th>Notes</th>
-            <th>Art</th>
+            <th>Art</th> -->
+         
          </tr>
       </thead>
       <tbody>
          <tr>
-         	<td><c:out value="${aRecord.owner }"/> </td>
+         	
             <td><c:out value="${aRecord.artist }"/> </td>
             <td><c:out value="${aRecord.album}"/> </td>
             <td><c:out value="${aRecord.year}"/> </td>
             <td><c:out value="${aRecord.genre}"/> </td>
            <td><c:out value="${aRecord.notes}"/> </td>
-            <td><img src="<c:out value="${aRecord.art}"/>"alt = "art" width="125" height="125" align="right" /></td>
-            <a href="/EditRecordServlet?id=${aRecord.id}">Edit a Record</a>
+            <td><a href="/EditRecordServlet?id=${aRecord.id}"><img src="<c:out value="${aRecord.art}"/>"alt = "art" width="125" height="125" align="right" /></a></td>
             
       </tbody>
    </table>

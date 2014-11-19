@@ -70,10 +70,10 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
       
-        <li class="active"><a href="/EditRecordServlet">Edit a Record</a></li>
-        <li><a href="/NewRecordServlet">New Record</a></li>
-        <li><a href="/DeleteRecordServlet">Delete a Record</a></li>
-        <li><a href="/HomeServlet">list of Records</a></li>
+       
+        <li class="active"><a href="/NewRecordServlet">New Record</a></li>
+       
+        <li><a href="/UsersRecordList">list of Records</a></li>
        
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/LogOutServlet">Logout</a></li>
@@ -81,6 +81,8 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
   <img src="/img/DSC01398.jpg" alt="logo" width="2000" height="150">
+  
+  
   
 
 </nav>

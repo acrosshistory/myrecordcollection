@@ -31,11 +31,13 @@
 			
 		</div>
 		</div>
-		<button type="submit" class="btn btn-default">delete</button>
+		
 	</form>
 </div>
 	
-
+	<button type="submit" class="btn btn-default">delete</button>
+	
 
 </body>
+<%@ include file="/WEB-INF/footer.jsp"%>
 </html>

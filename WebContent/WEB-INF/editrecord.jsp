@@ -16,10 +16,10 @@
 <%@ include file="/WEB-INF/nav.jsp"%>
 <link rel="stylesheet" href="/css/styles.css" type="text/css">
 <div class="container">
-	<h2>Edit a Record</h2>
+	<h1 align="center">Edit A Record</h1>
 
 
-	<h5>The Record is: <c:out value="${record }"/></h5>
+	<%-- <h5>The Record is: <c:out value="${record }"/></h5> --%>
 	<form  role="form" action="EditRecordServlet" method="post" >
 
 		<input type="hidden" name="action" value="updateRecord">
@@ -58,10 +58,13 @@
 		
 	
 			<input id="id" type="hidden" name="id" value="${ record.id }" readonly> <br>
-	
+	<div class="well well-sm">
+		<button type="submit" id="delete" class="btn btn-default">delete</button>
+		</div>
 		
-	
-		<button type="submit" class="btn btn-default">delete</button>
 	</form>
 </body>
+
+
+<%@ include file="/WEB-INF/footer.jsp"%>
 </html>

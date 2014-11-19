@@ -10,197 +10,206 @@ import javax.sql.DataSource;
 
 import austin.acc.mainproject.domain.Record;
 
-
-
+// managers for the record class to communicate with the data base  
 
 public class RecordManager {
-	
-	
-		DataSource ds;
-		
-		public RecordManager(DataSource ds){
-			this.ds = ds;
-		}
-		public ArrayList<Record> getRecords(){
-			ArrayList<Record> record = new ArrayList<>();
-			
-			try {
-				Connection connection;
-				connection = ds.getConnection();
-				PreparedStatement statement = connection.prepareStatement(" select artist, album, year, genre, notes, art from record");
-				ResultSet resultSet = statement.executeQuery();
-				
-				while (resultSet.next()) {
-					record.add(new Record(resultSet.getString("artist"), resultSet.getString("album"),resultSet.getString("year"), resultSet.getString("genre"), resultSet.getString("notes"),resultSet.getString("art")));
-				}
-				
-				resultSet.close();
-				statement.close();
-				connection.close();
-				
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+
+	DataSource ds;
+
+	public RecordManager(DataSource ds) {
+		this.ds = ds;
+	}
+
+	// getRecords is the first method I used to select the records from the data
+	// base
+	public ArrayList<Record> getRecords() {
+		ArrayList<Record> record = new ArrayList<>();
+
+		try {
+			Connection connection;
+			connection = ds.getConnection();
+			PreparedStatement statement = connection
+					.prepareStatement(" select artist, owner, album, year, genre, notes, art from record");
+			ResultSet resultSet = statement.executeQuery();
+
+			while (resultSet.next()) {
+				record.add(new Record(resultSet.getString("owner"), resultSet.getString("artist"), resultSet
+						.getString("album"), resultSet.getString("year"),
+						resultSet.getString("genre"), resultSet
+								.getString("notes"), resultSet.getString("art")));
 			}
 
-			return record;
-		}
-		public boolean saveRecord(Record aRecord) {
-			boolean succeeded = false;
+			resultSet.close();
+			statement.close();
+			connection.close();
 
-			
-			try {
-
-				Connection connection;
-				connection = ds.getConnection();
-				PreparedStatement statement = connection.prepareStatement("insert into record(owner, artist, album, year, genre, notes, art) values (?,?,?,?,?,?,?)");
-						statement.setString(1,aRecord.getOwner());
-						statement.setString(2,aRecord.getArtist());
-						statement.setString(3,aRecord.getAlbum());
-						statement.setString(4,aRecord.getYear());
-						statement.setString(5,aRecord.getGenre());
-						statement.setString(6,aRecord.getNotes());
-						statement.setString(7,aRecord.getArt());
-			
-				
-				statement.execute();
-				succeeded= true;
-				
-				statement.close();
-				connection.close();
-				
-				
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			return succeeded;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		public Record getRecordById(String idString) {
+
+		return record;
+	}
+
+	// a method to save a record to the data base
+	public boolean saveRecord(Record aRecord) {
+		boolean succeeded = false;
+
+		try {
 
 			Connection connection;
-			Record returnRecord = null;
-			try {
-				connection = ds.getConnection();
-				PreparedStatement ps = connection.prepareStatement("select id, owner, artist, album,  year, genre, notes, art from record where id = ?");
-				ps.setString(1, idString);
+			connection = ds.getConnection();
+			PreparedStatement statement = connection
+					.prepareStatement("insert into record(owner, artist, album, year, genre, notes, art) values (?,?,?,?,?,?,?)");
+			statement.setString(1, aRecord.getOwner());
+			statement.setString(2, aRecord.getArtist());
+			statement.setString(3, aRecord.getAlbum());
+			statement.setString(4, aRecord.getYear());
+			statement.setString(5, aRecord.getGenre());
+			statement.setString(6, aRecord.getNotes());
+			statement.setString(7, aRecord.getArt());
 
-				ResultSet rs = ps.executeQuery();
+			statement.execute();
+			succeeded = true;
 
-				while (rs.next()) {
-					int id = rs.getInt("id");
-					String artistString = rs.getString("artist");
-					String ownerString = rs.getString("owner");
-					String albumString = rs.getString("album");
-					String yearString = rs.getString("year");
-					String genreString = rs.getString("genre");
-					String notesString = rs.getString("notes");
-					String artString = rs.getString("art");
-					
+			statement.close();
+			connection.close();
 
-					returnRecord = new Record(id, artistString, ownerString, albumString, yearString, genreString, notesString, artString);
-				}
-
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			return returnRecord;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		public boolean updateRecord(Record myUpdatedRecord) {
-			Connection connection;
-			boolean updateSucceeded = false;
 
-			try {
-				connection = ds.getConnection();
-				PreparedStatement ps = connection.prepareStatement("update RECORD SET artist=?, album=?, year=?, genre=?, notes=?, art=? WHERE id = ?");
-				ps.setString(1, myUpdatedRecord.getArtist());
-				ps.setString(2,  myUpdatedRecord.getAlbum());
-				ps.setString(3,  myUpdatedRecord.getYear());
-				ps.setString(4,  myUpdatedRecord.getGenre());
-				ps.setString(5,  myUpdatedRecord.getNotes());
-				ps.setString(6,  myUpdatedRecord.getArt());
-				ps.setInt(7, myUpdatedRecord.getId());
-				System.out.println("artist" + myUpdatedRecord.getArtist());
-				ps.execute();
+		return succeeded;
+	}
 
-				connection.close();
-				updateSucceeded = true;
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return updateSucceeded;
+	// method to to select the id from the data base so i could use the
+	// following methods to delte and edit
+	public Record getRecordById(String idString) {
+
+		Connection connection;
+		Record returnRecord = null;
+		try {
+			connection = ds.getConnection();
+			PreparedStatement ps = connection
+					.prepareStatement("select id, owner, artist, album,  year, genre, notes, art from record where id = ?");
+			ps.setString(1, idString);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				String artistString = rs.getString("artist");
+				String ownerString = rs.getString("owner");
+				String albumString = rs.getString("album");
+				String yearString = rs.getString("year");
+				String genreString = rs.getString("genre");
+				String notesString = rs.getString("notes");
+				String artString = rs.getString("art");
+
+				returnRecord = new Record(id, artistString, ownerString,
+						albumString, yearString, genreString, notesString,
+						artString);
 			}
 
+			connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
+		return returnRecord;
+	}
+
+	// method to update the record from the original save method
+	public boolean updateRecord(Record myUpdatedRecord) {
+		Connection connection;
+		boolean updateSucceeded = false;
+
+		try {
+			connection = ds.getConnection();
+			PreparedStatement ps = connection
+					.prepareStatement("update RECORD SET artist=?, album=?, year=?, genre=?, notes=?, art=? WHERE id = ?");
+			ps.setString(1, myUpdatedRecord.getArtist());
+			ps.setString(2, myUpdatedRecord.getAlbum());
+			ps.setString(3, myUpdatedRecord.getYear());
+			ps.setString(4, myUpdatedRecord.getGenre());
+			ps.setString(5, myUpdatedRecord.getNotes());
+			ps.setString(6, myUpdatedRecord.getArt());
+			ps.setInt(7, myUpdatedRecord.getId());
+			System.out.println("artist" + myUpdatedRecord.getArtist());
+			ps.execute();
+
+			connection.close();
+			updateSucceeded = true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 			return updateSucceeded;
 		}
-		
-		public boolean deleteRecord(int id) {
-			boolean ok = false;
-			Connection connection;
-			
-			try {
 
-				
-				connection = ds.getConnection();
-				PreparedStatement statement = connection.prepareStatement("DELETE FROM record WHERE id = ?");
-				statement.setInt(1, id);
-	         
-			
-				
-				statement.execute();
-				ok = true;
-				statement.close();
-				connection.close();
-				
-				
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			return ok;
+		return updateSucceeded;
+	}
+
+	// method that deletes a record.
+	public boolean deleteRecord(int id) {
+		boolean ok = false;
+		Connection connection;
+
+		try {
+
+			connection = ds.getConnection();
+			PreparedStatement statement = connection
+					.prepareStatement("DELETE FROM record WHERE id = ?");
+			statement.setInt(1, id);
+
+			statement.execute();
+			ok = true;
+			statement.close();
+			connection.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		public ArrayList<Record> getRecordsByUser(String username) {
-			ArrayList<Record> records = new ArrayList<>();
 
-			try {
-				Connection connection;
-				connection = ds.getConnection();
+		return ok;
+	}
+
+	// method to select record by the owner so not all users can see the
+	// records, just whats attached to the owner
+	public ArrayList<Record> getRecordsByUser(String username) {
+		ArrayList<Record> records = new ArrayList<>();
+
+		try {
+			Connection connection;
+			connection = ds.getConnection();
+
+			PreparedStatement ps = connection
+					.prepareStatement("select id, owner, artist, album, year, genre, notes, art from record where owner = ? order by artist ASC");
+
+			ps.setString(1, username);
+
+			ResultSet resultSet = ps.executeQuery();
+
+			while (resultSet.next()) {
+				records.add(new Record(resultSet.getInt("id"),
 				
-				PreparedStatement ps = connection.prepareStatement("select id, owner, artist, album, year, genre, notes, art from record where owner = ?");
-				
-				ps.setString(1, username);
-
-				ResultSet resultSet = ps.executeQuery();
-				
-				while (resultSet.next()) {
-					records.add(new Record(
-							resultSet.getInt("id"),
-							resultSet.getString("artist"), 
-							resultSet.getString("album"), 
-							resultSet.getString("year"), 
-							resultSet.getString("genre"),
-							resultSet.getString("notes"),
-							resultSet.getString("art")
-							));
-				}
-
-				resultSet.close();
-				ps.close();
-				connection.close();
-
-			} catch (SQLException e) {
-				e.printStackTrace();
+				resultSet.getString("artist"), resultSet.getString("album"),
+						resultSet.getString("year"), resultSet
+								.getString("genre"), resultSet
+								.getString("notes"), resultSet.getString("art")));
 			}
 
-			return records;
-		}	
-		
-		
+			resultSet.close();
+			ps.close();
+			connection.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return records;
+	}
+
 }

@@ -7,11 +7,15 @@ package austin.acc.mainproject.domain;
  * @author michaelvjensen
  *
  */
+
+// variables for the user class
 public class Users {
 	int id;
 	String username;
 	String password;
 	
+	
+	// added constructor with id
 	public Users(int id, String username, String password) {
 		super();
 		this.id = id;
@@ -19,11 +23,13 @@ public class Users {
 		this.password = password;
 	}
 
+	// Original constructor prior to get user by id method
 	public Users(String username, String password) {
 		this.username = username;
 		this.password = password;
 	}
 
+	// getters and setters 
 	public int getId() {
 		return id;
 	}
@@ -48,6 +54,7 @@ public class Users {
 		this.password = password;
 	}
 
+	// to string
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

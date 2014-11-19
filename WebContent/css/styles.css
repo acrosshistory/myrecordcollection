@@ -10,6 +10,19 @@ body {
    
 }
 
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 35px;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
 ul{
 	font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #219AB3;
@@ -29,6 +42,7 @@ ul{
 }
 
 img {
+   
    max-width: 100%;
      
 }
@@ -42,11 +56,28 @@ footer p {
 }
 
 
-.table table-hover{
-	font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
+.table-hover{
+	 font-family: Montserrat, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #219AB3;
+    background-color: #000;
+    font-size: 30px;
+   
 }
 
+td.btn {
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
 
+td.btn-default {
+    border: 1px solid #fefdfb;
+    color: #fefdfb;
+    background-color: transparent;
+}
 
 
 .btn {
@@ -82,6 +113,25 @@ footer p {
     
 }
 
+label {	display: block;
+	position: relative;
+	left: 3em;
+	top: 1.2em;
+}
+
+textarea {
+		display: block;
+	position: relative;
+	left: 9em;
+	top: -0.5em;
+	
+	
+}
+input {	display: block;
+	position: relative;
+	left: 9em;
+	top: -0.5em;
+}
 input {
 	background-color:#000000; 
          
@@ -90,6 +140,11 @@ input {
 textarea {
 	background-color:#000000; 
               
+}
+
+#delete{
+ 
+    
 }
 
 h6 {

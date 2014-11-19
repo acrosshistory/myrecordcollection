@@ -14,14 +14,14 @@
 <body>
 <%@ include file="/WEB-INF/nav.jsp"%>
 <link rel="stylesheet" href="/css/styles.css" type="text/css">
-<h2> Enter a record </h2>
+<h1 align="center">Enter a Record</h1>
 
 <form role="form" action="NewRecordServlet" method="post">
 	<input type="hidden" name="action" value="addNewRecord">
 	<div class="well well-sm">
 	<div class="form-group">
-		<label for="artist">artist</label>
-		<input id="artist" type="text" name="artist" placeholder="artist" > <br>
+		<label for="artist">Artist</label>
+		<input id="artist" type="text" name="artist" placeholder="Artist" > <br>
 	</div>
 	
 	<div class="form-group">
@@ -38,18 +38,21 @@
 		<label for="year">Year</label>
 		<input id="year" type="text" name="year" placeholder="Year"> <br>
 	</div>
+	
 	<div class="form-group">
 		<label for="notes">Notes</label>
 		<input id="notes" type="text" name="notes" placeholder="Notes"> <br>
 	</div>
 	
 	<div class="form-group">
-		<label for="art">art</label>
-		<input id="art" type="text" name="art" placeholder="Art"> <br>
+		<label for="art">Art</label>
+		<input id="art" type="text" name="art" placeholder="Image Address"> <br>
+		
 	</div>
 	</div>
+	<div class="well well-sm">
 	<button type="submit" class="btn btn-default">Submit</button>
-
+	</div>
 
 </form>
 

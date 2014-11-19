@@ -7,6 +7,8 @@ package austin.acc.mainproject.domain;
  * @author michaelvjensen
  *
  */
+
+// variables for the record class
 public class Record {
 	private String owner;
 	private String artist;
@@ -16,9 +18,10 @@ public class Record {
 	private String notes;
 	private String art;
 	private int id;
-	
-	public Record(int id,String artist, String album, String year, String genre,
-			String notes, String art) {
+
+	// added constructor for the variable id, so i can use the getrecordbyid
+	public Record(int id, String artist, String album, String year,
+			String genre, String notes, String art) {
 		super();
 		this.id = id;
 		this.artist = artist;
@@ -29,7 +32,8 @@ public class Record {
 		this.notes = notes;
 		this.art = art;
 	}
-	
+
+	// Original constructor with out id
 	public Record(String artist, String album, String year, String genre,
 			String notes, String art) {
 		super();
@@ -41,9 +45,10 @@ public class Record {
 		this.art = art;
 	}
 
-	public Record(int id, String owner,String artist, String album, String year, String genre,
-			String notes, String art) {
-	
+	// constructor with the owner variable
+	public Record(int id, String owner, String artist, String album,
+			String year, String genre, String notes, String art) {
+
 		this.id = id;
 		this.owner = owner;
 		this.artist = artist;
@@ -52,14 +57,12 @@ public class Record {
 		this.genre = genre;
 		this.notes = notes;
 		this.art = art;
-	
-	}
-	
-	
-	
 
-	public Record(String owner,String artist, String album, String year, String genre,
-			String notes, String art) {
+	}
+
+	// constructor with the owner with out the id
+	public Record(String owner, String artist, String album, String year,
+			String genre, String notes, String art) {
 		this.owner = owner;
 		this.artist = artist;
 		this.album = album;
@@ -67,13 +70,14 @@ public class Record {
 		this.genre = genre;
 		this.notes = notes;
 		this.art = art;
-	
+
 	}
-	
+
+	// getters and setter-----
 	public String getOwner() {
 		return owner;
 	}
-	
+
 	public void setOwner(String owner) {
 		this.owner = owner;
 	}
@@ -134,6 +138,7 @@ public class Record {
 		this.id = id;
 	}
 
+	// updated tostring
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -146,6 +151,4 @@ public class Record {
 		return builder.toString();
 	}
 
-	
-	
 }

@@ -10,28 +10,27 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="<c:url value="/bootstrap-3.2-3.0-dist/css/bootstrap.min.css"/>">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="<c:url value="/bootstrap-3.2-3.0-dist/css/bootstrap-theme.min.css"/>">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="<c:url value="/bootstrap-3.2-3.0-dist/js/bootstrap.min.js"/>"></script>
+<link rel="stylesheet" href="<c:url value='/bootstrap-3.2.0-dist/css/bootstrap.css'/>"/>
+<link rel="stylesheet" href="/css/styles.css" type="text/css">
 
 <title>Add New User</title>
+
+
 </head>
 <body>
-	<div class="container">
-		<h2>Add a New User</h2>
+ 
+
+
+		<h1 align="center">Add A New User</h1>
 
 		<p class="bg-danger">${errorMessage}</p>
-
+		<div class="well well-sm">
+		
 		<form  role="form" action="NewUsersServlet" method="post" >
 			<input type="hidden" name="action" value="addNewUser">
 			<div class="form-group">
 				<label for="username">User</label>
-				<input id="username" type="text" name="username" placeholder="Username" > <br>
+				<input id="username" type="text" name="username" placeholder="Username"> <br>
 			</div>
 			<div class="form-group">
 				<label for="password">Password</label>
@@ -40,5 +39,6 @@
 			<button type="submit" class="btn btn-default">Submit</button>
 		</form>
 	</div>
+
 </body>
 </html>

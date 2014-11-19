@@ -19,6 +19,7 @@ import austin.acc.mainproject.managers.RecordManager;
  */
 @WebServlet(description = "Main home page for our my records Application", urlPatterns = {
 		"/HomeServlet", "" })
+
 public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -48,21 +49,11 @@ public class HomeServlet extends HttpServlet {
 			RecordManager rm = new RecordManager(ds);
 			request.setAttribute("theRecords", rm.getRecords());
 			System.out.print(rm.getRecords());
-			getServletContext()
-					.getRequestDispatcher("/UsersRecordList").forward(
-							request, response);
+			getServletContext().getRequestDispatcher("/UsersRecordList")
+					.forward(request, response);
 			request.setAttribute("now", new Date());
 
 		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 	}
 
 }
