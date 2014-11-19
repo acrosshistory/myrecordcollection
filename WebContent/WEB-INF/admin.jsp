@@ -52,8 +52,10 @@
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>
-	<!-- /.container-fluid --> <img src="/img/DSC01398.jpg" alt="logo"
-		width="2000" height="150"> <c:forEach items="${theRecords }"
+	<!-- /.container-fluid --> 
+		<img src="/img/DSC01398.jpg" style='width:100%;' border="0" alt="Null" >
+		
+		<c:forEach items="${theRecords }"
 		var="aRecord">
 
 		<div class="table-responsive">

@@ -71,7 +71,7 @@
       <ul class="nav navbar-nav">
       
        
-        <li class="active"><a href="/NewRecordServlet">New Record</a></li>
+        <li><a href="/NewRecordServlet">New Record</a></li>
        
         <li><a href="/UsersRecordList">list of Records</a></li>
        
@@ -80,7 +80,7 @@
        
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
-  <img src="/img/DSC01398.jpg" alt="logo" width="2000" height="150">
+  <img src="/img/DSC01398.jpg" style='width:100%;' border="0" alt="Null" >
   
   
   
